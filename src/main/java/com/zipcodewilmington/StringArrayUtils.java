@@ -83,7 +83,7 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-     //   reverse(array);
+
       return Arrays.equals(reverse(array) , array);
 
     }
@@ -149,23 +149,19 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
-         int arrayLength= array.length;
-        String[] storeAltered= new String[20];
+        String[] storeAltered= new String[array.length];
         int j=0;
-        for (int i = 0; i < arrayLength ;) {
-            if (array[i] == array[i + 1])
-            {
+        for (int i = 0; i < array.length ;i++) {
+            if (i==0 || !array[i].equals(array[i - 1]) ) {
                 storeAltered[j] = array[i];
-            j++;
-            i++;
+                j++;
+             }
         }
-            else {
-                storeAltered[j] = array[i+1];
-                i++;
-            }
-
+        String[] output = new String[j];
+        for(int i = 0; i < j; i++){
+            output[i] = storeAltered[i];
         }
-        return storeAltered;
+        return output;
     }
 
     /**
