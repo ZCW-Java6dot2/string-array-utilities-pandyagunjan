@@ -180,10 +180,31 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+        String[] buffer = new String[array.length];
+        String lastSeen = array[0];
+        String stringToAdd = "";
+        int outputLength = 0;
 
 
-        return null;
+        for(int i = 0; i < array.length; i++){
+            if (array[i].equals(lastSeen))
+                stringToAdd += lastSeen;
+            else {
+                buffer[outputLength++] = stringToAdd;
+                lastSeen = array[i];
+                stringToAdd = array[i];
+            }
+        }
+        buffer[outputLength++] = stringToAdd;
+
+        //Creating output with the new size array based on result.
+        String[] output = new String[outputLength];
+        for(int i = 0; i < outputLength; i++){
+            output[i] = buffer[i];
+        }
+        return output;
     }
+
 
 
 }
