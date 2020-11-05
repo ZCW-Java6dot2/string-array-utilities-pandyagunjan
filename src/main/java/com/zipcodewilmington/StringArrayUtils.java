@@ -93,18 +93,29 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-     /*   StringBuilder storeString = new StringBuilder();
+
+
+        StringBuilder storeString = new StringBuilder();
         for (int i = 0; i < array.length ; i++) {
             storeString.append(array[i]);
         }
-      //  sort(array);
-        String sortString = storeString.toString().trim();
-        for (String s:array){
 
+        String sortString = storeString.toString().replaceAll(" ","");
+        char[] storeAltered = new char[sortString.length()];
+        int j=1;
+        char[] chars=sortString.toLowerCase().toCharArray();
+        Arrays.sort(chars);
+
+        storeAltered[0]=chars[0];
+        for (int i = 1; i < chars.length ;i++) {
+            if ( !(chars[i] == chars[i - 1])) {
+                storeAltered[j] = chars[i];
+                j++;
+            }
         }
-       // sortString.replaceAll("\\s " ,"");
-*/
-        return false;
+        String finalString=String.valueOf(storeAltered).trim();
+        return finalString.equals("abcdefghijklmnopqrstuvwxyz");
+        //return true;
     }
 
     /**
@@ -169,6 +180,8 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+
+
         return null;
     }
 
