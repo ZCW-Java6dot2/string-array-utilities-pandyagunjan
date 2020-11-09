@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import com.sun.deploy.security.SelectableSecurityManager;
+
 import java.util.Arrays;
 
 /**
@@ -74,7 +76,7 @@ public class StringArrayUtils {
            reverseArray[j]=array[i];
            j++;
         }
-
+       // reverseArray.equals(array);
         return reverseArray;
     }
 
@@ -83,10 +85,24 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
+       int j = array.length-1;;
+        for (int i = 0; i < array.length;) {
+            {
+            if(array[i].equals(array[j]))
+                {
+                    i++;
+                    j--;
+                }
+            else return false;
+            }
 
-      return Arrays.equals(reverse(array) , array);
+        }
 
+        //   return reverseArray.equals(array);
+        return true;
+        //  return Arrays.equals(reverse(array) , array);
     }
+
 
     /**
      * @param array array of String objects
