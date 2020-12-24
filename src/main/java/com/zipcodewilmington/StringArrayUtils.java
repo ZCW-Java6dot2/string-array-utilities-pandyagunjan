@@ -29,7 +29,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return array[array.length-1];
+        return array[array.length - 1];
     }
 
     /**
@@ -37,7 +37,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return array[array.length-2];
+        return array[array.length - 2];
     }
 
     /**
@@ -70,13 +70,12 @@ public class StringArrayUtils {
         int lengthA = array.length;
 
         String[] reverseArray = new String[lengthA];
-        int j=0;
-        for(int i=array.length-1 ;i >=0  ;i--)
-        {
-           reverseArray[j]=array[i];
-           j++;
+        int j = 0;
+        for (int i = array.length - 1; i >= 0; i--) {
+            reverseArray[j] = array[i];
+            j++;
         }
-       // reverseArray.equals(array);
+        // reverseArray.equals(array);
         return reverseArray;
     }
 
@@ -95,12 +94,11 @@ public class StringArrayUtils {
 
 
         //Method 3 - to work with same array and divide by half to see if its same from left-right and right-left
-        Boolean flag=true;
-        int n=array.length;
-        for(int i=0;i< n/2 ;i++)
-        {
-            if(array[i] != array[n-1-i])
-            {
+        Boolean flag = true;
+        int n = array.length;
+        int arraymid = n / 2;
+        for (int i = 0; i < arraymid; i++) {
+            if (array[i] != array[n - 1 - i]) {
                 flag = false;
                 break;
             }
@@ -115,29 +113,69 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
 
-
+        //Method 1 , Append the array contents in StringBuilder and after removing spaces ,sort it , once sorted check if it matches to a-z
         StringBuilder storeString = new StringBuilder();
-        for (int i = 0; i < array.length ; i++) {
+        for (int i = 0; i < array.length; i++) {
             storeString.append(array[i]);
         }
 
-        String sortString = storeString.toString().replaceAll(" ","");
-        char[] storeAltered = new char[sortString.length()];
-        int j=1;
-        char[] chars=sortString.toLowerCase().toCharArray();
-        Arrays.sort(chars);
+        String sortString = storeString.toString().replaceAll(" ", "");
+//        char[] storeAltered = new char[sortString.length()];
+//        int j=1;
+//        char[] chars=sortString.toLowerCase().toCharArray();
+//        Arrays.sort(chars);
+//
+//        storeAltered[0]=chars[0];
+//        for (int i = 1; i < chars.length ;i++) {
+//            if ( !(chars[i] == chars[i - 1])) {
+//                storeAltered[j] = chars[i];
+//                j++;
+//            }
+//        }
+//        String finalString=chars.toString().trim();//String.valueOf(storeAltered).trim();
+//        return finalString.equals("abcdefghijklmnopqrstuvwxyz");
+//
+//METHOD 2 - set flag to true for the letter found and if any flg is false, return false.
+        // Create a hash table to mark the
+        // characters present in the string
+        // By default all the elements of
+        // mark would be false.
+        boolean[] mark = new boolean[26];
 
-        storeAltered[0]=chars[0];
-        for (int i = 1; i < chars.length ;i++) {
-            if ( !(chars[i] == chars[i - 1])) {
-                storeAltered[j] = chars[i];
-                j++;
-            }
+        // For indexing in mark[]
+        int index = 0;
+        String str = sortString;
+        // Traverse all characters
+        for (int i = 0; i < str.length(); i++) {
+            // If uppercase character, subtract 'A'
+            // to find index.
+            if (str.charAt(i) >= 'A'  && str.charAt(i) <= 'Z')
+                index = str.charAt(i) - 'A';
+
+                // If lowercase character, subtract 'a'
+                // to find index.
+            else if (str.charAt(i) >='a' && str.charAt(i) <= 'z')
+
+                index = str.charAt(i) - 'a';
+
+                // If this character is other than english
+                // lowercase and uppercase characters.
+            else
+                continue;
+            mark[index] = true;
         }
-        String finalString=String.valueOf(storeAltered).trim();
-        return finalString.equals("abcdefghijklmnopqrstuvwxyz");
-        //return true;
+
+        // Return false if any character is unmarked
+        for (int i = 0; i <= 25; i++)
+            if (mark[i] == false)
+                return (false);
+
+        // If all characters were present
+        return (true);
     }
+
+
+
 
     /**
      * @param array array of String objects
