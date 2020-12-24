@@ -85,22 +85,27 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-       int j = array.length-1;;
-        for (int i = 0; i < array.length;) {
-            {
-            if(array[i].equals(array[j]))
-                {
-                    i++;
-                    j--;
-                }
-            else return false;
-            }
+        //Method one , use reverse method from above and check if Arrays.equals()
+        //String[] reversedArray = reverse(array);
+        //return Arrays.equals(reversedArray,array);
 
-        }
 
-        //   return reverseArray.equals(array);
-        return true;
+        //Method 2 , use Arrays,equal and reverse in build method to check if they are equal
         //  return Arrays.equals(reverse(array) , array);
+
+
+        //Method 3 - to work with same array and divide by half to see if its same from left-right and right-left
+        Boolean flag=true;
+        int n=array.length;
+        for(int i=0;i< n/2 ;i++)
+        {
+            if(array[i] != array[n-1-i])
+            {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 
 
