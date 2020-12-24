@@ -201,13 +201,13 @@ public class StringArrayUtils {
         int arrayLength= array.length;
         String[] storeAltered= new String[arrayLength-1];
         int j=0;
-        for (int i = 0; i < arrayLength ;) {
+        for (int i = 0; i < arrayLength ;i++) {
             if(array[i] == valueToRemove)
-                i++;
+               continue;
             else {
                 storeAltered[j] = array[i];
                 j++;
-                i++;
+
             }
         }
         return storeAltered;
