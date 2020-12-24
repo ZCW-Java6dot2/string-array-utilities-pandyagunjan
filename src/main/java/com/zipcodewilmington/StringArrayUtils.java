@@ -227,6 +227,7 @@ public class StringArrayUtils {
                 j++;
              }
         }
+        //Creating output with the new size array based on result.
         String[] output = new String[j];
         for(int i = 0; i < j; i++){
             output[i] = storeAltered[i];
