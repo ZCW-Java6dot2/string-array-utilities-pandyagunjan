@@ -29,6 +29,12 @@ public class IsPalindromicTest {
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertFalse(outcome);
     }
+    @Test
+    public void testIsPalindromic4() {
+        String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "This is not a plaindrome", "Is this a plaindrome?"};
+        boolean outcome = StringArrayUtils.isPalindromic(array);
+        Assert.assertTrue(outcome);
+    }
 
 
 }

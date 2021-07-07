@@ -14,7 +14,7 @@ public class IsPangramicTest {
 
     @Test
     public void testIsPangramic2() {
-        String[] array = {"The", "quick", "onyx", "goblin", "jumps", "over", "the", "lazy", "dwarf"};
+        String[] array = {"The", "quick*^^&*&^", "onyx", "goblin", "jumps", "over", "the", "lazy", "dwarf"};
         boolean outcome = StringArrayUtils.isPangramic(array);
         Assert.assertTrue(outcome);
     }
